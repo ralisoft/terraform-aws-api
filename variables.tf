@@ -28,11 +28,6 @@ variable "route53_subdomains" {
   type = list
 }
 
-variable "route53_root_domain" {
-  type    = bool
-  default = false
-}
-
 # --------------------------------------------------------------
 #  Misc
 # --------------------------------------------------------------
@@ -40,6 +35,10 @@ variable "tags" {
   type = map
 
   default = {}
+}
+
+variable "name" {
+  type = string
 }
 
 variable "environment" {
