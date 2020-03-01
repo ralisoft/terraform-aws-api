@@ -9,4 +9,6 @@ locals {
       "Environment" = var.environment
     },
   )
+
+  aliases = compact(concat(formatlist("%s.${var.route53_domain}", var.route53_subdomains), [var.route53_root_domain ? var.route53_domain : "", ]))
 }
