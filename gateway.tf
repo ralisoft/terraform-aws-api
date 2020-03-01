@@ -7,8 +7,10 @@ resource "aws_api_gateway_rest_api" "api" {
 }
 
 resource "aws_api_gateway_domain_name" "api" {
+  count       = var.enabled ? length(local.aliases) : 0
+  domain_name = element(local.aliases, count.index)
+
   regional_certificate_arn = var.certificate_arn
-  domain_name              = "${var.route53_subdomain}.${var.route53_domain}"
 
   endpoint_configuration {
     types = ["REGIONAL"]
