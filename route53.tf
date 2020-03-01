@@ -9,8 +9,8 @@ resource "aws_route53_record" "main" {
   type    = "A"
 
   alias {
-    name                   = element(aws_api_gateway_domain_name.api.regional_domain_name, count.index)
-    zone_id                = element(aws_api_gateway_domain_name.api.regional_zone_id, count.index)
+    name                   = aws_api_gateway_domain_name.api[count.index].regional_domain_name
+    zone_id                = aws_api_gateway_domain_name.api[count.index].regional_zone_id
     evaluate_target_health = true
   }
 }
